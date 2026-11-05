@@ -2,7 +2,24 @@ function pub_matlab_joints(~,message)
 % Display the Joint States up to 2 d.p. using fprintf in the order below:
 % Namely:{"sh_lift", "sh_pan", "elbow", "w1", "w2", "w3", "f1", "f2"};
 
-    % BEGIN_YOUR_CODE 
-    error("Not implemented yet")
+    % BEGIN_YOUR_CODE
+    sh_lift = message.Position(2);
+    sh_pan = message.Position(1);
+    elbow = message.Position(3);
+    w1 = message.Position(4);
+    w2 = message.Position(5);
+    w3 = message.Position(6);
+    f1 = message.Position(8);
+    f2 = message.Position(9);
+    
+    fprintf(['sh_lift = %.2f \n' ...
+        'sh_pan = %.2f \n' ...
+        'elbow = %.2f \n' ...
+        'w1 = %.2f \n' ...
+        'w2 = %.2f \n' ...
+        'w3 = %.2f \n' ...
+        'f1 = %.2f \n' ...
+        'f2 = %.2f \n'], ...
+        sh_lift, sh_pan, elbow, w1, w2, w3, f1, f2);
     % END_YOUR_CODE
 end
