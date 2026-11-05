@@ -5,14 +5,15 @@ function resetWorld(optns)
 % Input: (dict) optns
 % Output: None
 %-------------------------------------------------------------------------- 
-    disp('Resetting the world...');
+    % disp('Resetting the world...'); % Duplicated with main page
     
     % TODO: 01 Get robot handle
-    % **Complete Code**
+    r = optns{"rHandle"};
     
     % TODO: 02 Create Empty Simulation message
-    % **Complete Code**
+    res_req = rosmessage(r.res_client);
     
     % TODO: 03 Call reset service
+    call(r.res_client, res_req);
     
 end
