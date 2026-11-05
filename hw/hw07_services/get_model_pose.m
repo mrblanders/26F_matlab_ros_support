@@ -24,7 +24,7 @@ function pose = get_model_pose(model_name,optns)
 
 % 04 Call client 
 try
-    [pose,status] = call(r.get_models_state_client,get_models_sate_client_msg);
+    [pose,status] = call(r.get_models_state_client,get_models_state_client_msg);
 catch
     disp('Error - model pose could not be found')
 end
