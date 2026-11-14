@@ -50,16 +50,16 @@ function [xyz,theta,ptCloud_vec,scene_pca_vec] = findObjectPoses(ptCloud,rgbImag
         roi = int32(round(bboxes(idx, :)));                     % Get bounding box as integer coordinates
 
         % Extract region of interest (ROI) from bounding box, clamped to image boundaries
-        tr = max(roi(2), 0);                                   % Top row: y-value. Cannot be negative.
-        ur = min(roi(2) + roi(4), size(rgbImage,1));           % Bottom row: y + rows (or height).
-        lc = max(roi(1), 0);                                   % Left column: x-value, coord of left-edge
+        tr = max(roi(2), 0);                                   % Top row
+        ur = min(roi(2) + roi(4), size(rgbImage,1));           % Bottom row
+        lc = max(roi(1), 0);                                   % Left column
         rc = min(roi(1) + roi(3), size(rgbImage,2));           % Right column        
         
        
         % Mark ROI pixels in initial mask by setting those index entries to 1       
         initMask(tr:ur, lc:rc) = 1;
 
-        % Combine initial mask with non-plane mask via AND operator. Length of both structures needs to be the same 
+        % Combine initial mask with non-plane mask
         instanceMask = initMask(:) & nonPlaneMask;% & ROIMask;
     
         % Select points from the point cloud using the final mask
